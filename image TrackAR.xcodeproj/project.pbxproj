@@ -13,6 +13,8 @@
 		A4C2BE72228532C400BC1B08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C2BE70228532C400BC1B08 /* Main.storyboard */; };
 		A4C2BE74228532C500BC1B08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C2BE73228532C500BC1B08 /* Assets.xcassets */; };
 		A4C2BE77228532C500BC1B08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C2BE75228532C500BC1B08 /* LaunchScreen.storyboard */; };
+		A4C2BE7F2285330400BC1B08 /* videoPizzaSam.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A4C2BE7E2285330400BC1B08 /* videoPizzaSam.mp4 */; };
+		A4C2BE85228545D800BC1B08 /* particle.scnp in Resources */ = {isa = PBXBuildFile; fileRef = A4C2BE84228545D800BC1B08 /* particle.scnp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A4C2BE73228532C500BC1B08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4C2BE76228532C500BC1B08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4C2BE78228532C500BC1B08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4C2BE7E2285330400BC1B08 /* videoPizzaSam.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoPizzaSam.mp4; sourceTree = "<group>"; };
+		A4C2BE84228545D800BC1B08 /* particle.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = particle.scnp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				A4C2BE70228532C400BC1B08 /* Main.storyboard */,
 				A4C2BE73228532C500BC1B08 /* Assets.xcassets */,
 				A4C2BE75228532C500BC1B08 /* LaunchScreen.storyboard */,
+				A4C2BE84228545D800BC1B08 /* particle.scnp */,
+				A4C2BE7E2285330400BC1B08 /* videoPizzaSam.mp4 */,
 				A4C2BE78228532C500BC1B08 /* Info.plist */,
 			);
 			path = "image TrackAR";
@@ -126,9 +132,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4C2BE6D228532C400BC1B08 /* art.scnassets in Resources */,
+				A4C2BE85228545D800BC1B08 /* particle.scnp in Resources */,
 				A4C2BE77228532C500BC1B08 /* LaunchScreen.storyboard in Resources */,
 				A4C2BE74228532C500BC1B08 /* Assets.xcassets in Resources */,
 				A4C2BE72228532C400BC1B08 /* Main.storyboard in Resources */,
+				A4C2BE7F2285330400BC1B08 /* videoPizzaSam.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +293,7 @@
 		A4C2BE7C228532C500BC1B08 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconARKIT;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X3N5XPMN8M;
 				INFOPLIST_FILE = "image TrackAR/Info.plist";
@@ -303,7 +311,7 @@
 		A4C2BE7D228532C500BC1B08 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconARKIT;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X3N5XPMN8M;
 				INFOPLIST_FILE = "image TrackAR/Info.plist";

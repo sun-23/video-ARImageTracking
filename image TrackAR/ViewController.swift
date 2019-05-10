@@ -9,6 +9,8 @@
 import UIKit
 import SceneKit
 import ARKit
+import AVFoundation
+import SpriteKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
@@ -34,7 +36,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+        let configuration = ARImageTrackingConfiguration()
+        
+        guard let trackImage = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
+        
+        configuration.trackingImages = trackImage
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -46,30 +52,50 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
-
-    // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
     
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
+        guard anchor is ARImageAnchor else { return }
+        
+        // Container
+        guard let container = sceneView.scene.rootNode.childNode(withName: "container", recursively: false) else { return }
+        
+        container.removeFromParentNode()
+        node.addChildNode(container)
+        container.isHidden = false
+        
+        
+        // video
+        
+        let videoURL = Bundle.main.url(forResource: "videoPizzaSam", withExtension: "mp4")!
+        let videoPlayer = AVPlayer(url: videoURL)
+        
+        let videoScene = SKScene(size: CGSize(width: 720.0, height: 1280.0))
+        
+        let videoNode = SKVideoNode(avPlayer: videoPlayer)
+        videoNode.position = CGPoint(x: videoScene.size.width / 2, y: videoScene.size.height / 2)
+        videoNode.size = videoScene.size
+        videoNode.yScale = -1
+        videoNode.play()
+        
+        videoScene.addChild(videoNode) // add video
+        
+        guard let video = container.childNode(withName: "video", recursively: true) else { return }
+        video.geometry?.firstMaterial?.diffuse.contents = videoScene
+        
+        // Animations
+        guard let videoContainer = container.childNode(withName: "videoContainer", recursively: false) else { return }
+        
+        videoContainer.runAction(SCNAction.sequence([SCNAction.wait(duration: 1.0), SCNAction.scale(to: 1.0, duration: 0.5)]))
+        
+        let particle = SCNParticleSystem(named: "particle.scnp", inDirectory: nil)!
+        let particleNode = SCNNode()
+        
+        container.addChildNode(particleNode)
+        particleNode.addParticleSystem(particle)
         
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
     
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
 }
